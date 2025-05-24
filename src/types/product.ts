@@ -5,4 +5,6 @@ export type Product = {
   image: string
   price: number
   content: string
+  relevance: number
+  brand: string
 }

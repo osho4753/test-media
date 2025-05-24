@@ -8,7 +8,6 @@ export function filterAndSortProducts(
   sort: string
 ): Product[] {
   let result = [...products]
-
   if (search.trim()) {
     const lower = search.toLowerCase()
     result = result.filter(
@@ -24,6 +23,8 @@ export function filterAndSortProducts(
     result.sort((a, b) => a.price - b.price)
   } else if (sort === 'price-desc') {
     result.sort((a, b) => b.price - a.price)
+  } else if (sort === 'relevance') {
+    result.sort((a, b) => b.relevance - a.relevance)
   }
 
   return result

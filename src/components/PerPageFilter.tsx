@@ -6,9 +6,6 @@ interface Props {
 export default function PerPageFilter({ value, onChange }: Props) {
   return (
     <div className="flex items-center gap-2">
-      <label htmlFor="items-per-page" className="text-sm">
-        Items per page:
-      </label>
       <select
         id="items-per-page"
         value={value}

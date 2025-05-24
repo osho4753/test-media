@@ -40,34 +40,50 @@ function MainPage() {
   const totalPages = Math.ceil(filtered.length / itemPerPage)
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-6">
-      <h1 className="text-3xl font-bold mb-6 text-center">Products</h1>
-      <SearchBar value={search} onChange={setSearch} />
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <PerPageFilter value={itemPerPage} onChange={setItemPerPage} />
-        <PriceFilter
-          min={isFinite(minPrice) ? minPrice : 0}
-          max={isFinite(maxPrice) ? maxPrice : 0}
-          onMinChange={setMinPrice}
-          onMaxChange={(val) => setMaxPrice(val || Infinity)}
-        />
-        <SortSelect value={sort} onChange={setSort} />
+    <div className="max-w-7xl mx-auto px-4 py-6">
+      <div className="flex items-center justify-end gap-4 mb-6">
+        <h1 className="text-3xl font-bold mb-6">Find Products</h1>
+        <SearchBar value={search} onChange={setSearch} />
       </div>
-      {loading ? (
-        <p className="mt-10 text-center text-gray-500">Loading...</p>
-      ) : (
-        <>
-          {filtered.length === 0 ? (
+      <div className="flex flex-col lg:flex-row gap-6">
+        <aside className="w-full lg:w-1/4 lg:sticky lg:top-6">
+          <h1 className="text-3xl font-bold ">Filters</h1>
+          <div className="bg-white p-4 rounded shadow space-y-4">
+            <div>
+              <h2 className="text-lg font-semibold mb-2">Price Range</h2>
+              <PriceFilter
+                min={isFinite(minPrice) ? minPrice : 0}
+                max={isFinite(maxPrice) ? maxPrice : 0}
+                onMinChange={setMinPrice}
+                onMaxChange={(val) => setMaxPrice(val || Infinity)}
+              />
+            </div>
+
+            <div>
+              <h2 className="text-lg font-semibold mb-2">Sort</h2>
+              <SortSelect value={sort} onChange={setSort} />
+            </div>
+            <div>
+              <h2 className="text-lg font-semibold mb-2">Items per page</h2>
+              <PerPageFilter value={itemPerPage} onChange={setItemPerPage} />
+            </div>
+          </div>
+        </aside>
+        <main className="flex-1">
+          {loading ? (
+            <p className="mt-10 text-center text-gray-500">Loading...</p>
+          ) : filtered.length === 0 ? (
             <p className="mt-10 text-center text-gray-500">
               There are no products
             </p>
           ) : (
             <>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {paginated.map((p, index) => (
                   <ProductCard key={index} product={p} index={index} />
                 ))}
               </div>
+
               <Pagination
                 currentPage={page}
                 totalPages={totalPages}
@@ -75,8 +91,8 @@ function MainPage() {
               />
             </>
           )}
-        </>
-      )}
+        </main>
+      </div>
     </div>
   )
 }

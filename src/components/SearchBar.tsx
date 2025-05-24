@@ -9,8 +9,8 @@ export const SearchBar = ({ value, onChange }: Props) => {
       type="text"
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      placeholder="Find products..."
-      className="w-full p-2 border rounded mb-4"
+      placeholder="🔍 Search products..."
+      className="w-120 p-2 border border-black/30 rounded mb-4"
     />
   )
 }

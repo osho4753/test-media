@@ -13,6 +13,7 @@ export const SortSelect = ({ value, onChange }: Props) => {
       <option value="relevance">Default sort</option>
       <option value="price-asc">Price ↑</option>
       <option value="price-desc">Price ↓</option>
+      <option value="relevance">Relevance</option>
     </select>
   )
 }

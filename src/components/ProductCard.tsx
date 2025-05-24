@@ -9,11 +9,11 @@ interface Props {
 export const ProductCard = ({ product, index }: Props) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.02, duration: 0.4 }}
+      transition={{ delay: index * 0.02, duration: 0.6 }}
       viewport={{ once: true, amount: 0.2 }}
-      className="border rounded-lg p-4 shadow-md bg-white"
+      className="border rounded-lg p-4 shadow-sm transition-transform duration-300 transform hover:scale-105"
     >
       <a href={product.url} target="_blank" rel="noopener noreferrer">
         <img
