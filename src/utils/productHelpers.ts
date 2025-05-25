@@ -6,7 +6,8 @@ export function filterAndSortProducts(
   minPrice: number,
   maxPrice: number,
   sort: string,
-  selectedBrands: string[]
+  selectedBrands: string[],
+  selectedCategory: string[]
 ): Product[] {
   let result = [...products]
   if (search.trim()) {
@@ -20,6 +21,13 @@ export function filterAndSortProducts(
   if (selectedBrands.length > 0) {
     result = result.filter((p) => selectedBrands.includes(p.brand))
   }
+
+  if (selectedCategory.length > 0) {
+    result = result.filter((c) =>
+      selectedCategory.some((cat) => c.categories.includes(cat))
+    )
+  }
+
   result = result.filter((p) => p.price >= minPrice && p.price <= maxPrice)
 
   if (sort === 'price-asc') {

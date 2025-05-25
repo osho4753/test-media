@@ -9,6 +9,7 @@ import { useProducts } from '../api/useProducts'
 import PerPageFilter from '../components/PerPageFilter'
 import { filterAndSortProducts, paginate } from '../utils/productHelpers'
 import BrandFilter from '../components/BrandFilter'
+import CategoryFilter from '../components/CategoryFilter'
 
 function MainPage() {
   const { products, loading } = useProducts()
@@ -20,6 +21,7 @@ function MainPage() {
   const [maxPrice, setMaxPrice] = useState(Infinity)
   const [page, setPage] = useState(1)
   const [selectedBrands, setSelectedBrands] = useState<string[]>([])
+  const [selectedCategory, setSelectedCategory] = useState<string[]>([])
 
   const filtered = useMemo(() => {
     return filterAndSortProducts(
@@ -28,9 +30,18 @@ function MainPage() {
       minPrice,
       maxPrice,
       sort,
-      selectedBrands
+      selectedBrands,
+      selectedCategory
     )
-  }, [products, debouncedSearch, minPrice, maxPrice, sort, selectedBrands])
+  }, [
+    products,
+    debouncedSearch,
+    minPrice,
+    maxPrice,
+    sort,
+    selectedBrands,
+    selectedCategory,
+  ])
 
   const paginated = useMemo(() => {
     return paginate(filtered, page, itemPerPage)
@@ -71,6 +82,13 @@ function MainPage() {
                 value={products}
                 selected={selectedBrands}
                 onChange={setSelectedBrands}
+              />{' '}
+            </div>
+            <div>
+              <CategoryFilter
+                value={products}
+                selected={selectedCategory}
+                onChange={setSelectedCategory}
               />{' '}
             </div>
             <div>
