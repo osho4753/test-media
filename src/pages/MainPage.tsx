@@ -8,6 +8,7 @@ import { useDebounce } from '../api/useDebounce'
 import { useProducts } from '../api/useProducts'
 import PerPageFilter from '../components/PerPageFilter'
 import { filterAndSortProducts, paginate } from '../utils/productHelpers'
+import BrandFilter from '../components/BrandFilter'
 
 function MainPage() {
   const { products, loading } = useProducts()
@@ -18,6 +19,7 @@ function MainPage() {
   const [minPrice, setMinPrice] = useState(0)
   const [maxPrice, setMaxPrice] = useState(Infinity)
   const [page, setPage] = useState(1)
+  const [selectedBrands, setSelectedBrands] = useState<string[]>([])
 
   const filtered = useMemo(() => {
     return filterAndSortProducts(
@@ -25,9 +27,10 @@ function MainPage() {
       debouncedSearch,
       minPrice,
       maxPrice,
-      sort
+      sort,
+      selectedBrands
     )
-  }, [products, debouncedSearch, minPrice, maxPrice, sort])
+  }, [products, debouncedSearch, minPrice, maxPrice, sort, selectedBrands])
 
   const paginated = useMemo(() => {
     return paginate(filtered, page, itemPerPage)
@@ -35,7 +38,7 @@ function MainPage() {
 
   useEffect(() => {
     setPage(1)
-  }, [debouncedSearch, minPrice, maxPrice, sort])
+  }, [debouncedSearch, minPrice, maxPrice, sort, selectedBrands])
 
   const totalPages = Math.ceil(filtered.length / itemPerPage)
 
@@ -62,6 +65,14 @@ function MainPage() {
             <div>
               <h2 className="text-lg font-semibold mb-2">Sort</h2>
               <SortSelect value={sort} onChange={setSort} />
+            </div>
+            <div>
+              <h2 className="text-lg font-semibold mb-2">Selected Brands</h2>
+              <BrandFilter
+                value={products}
+                selected={selectedBrands}
+                onChange={setSelectedBrands}
+              />{' '}
             </div>
             <div>
               <h2 className="text-lg font-semibold mb-2">Items per page</h2>

@@ -10,10 +10,9 @@ export const SortSelect = ({ value, onChange }: Props) => {
       onChange={(e) => onChange(e.target.value)}
       className="p-2 border rounded mb-4"
     >
-      <option value="relevance">Default sort</option>
+      <option value="relecance">Relevance</option>
       <option value="price-asc">Price ↑</option>
       <option value="price-desc">Price ↓</option>
-      <option value="relevance">Relevance</option>
     </select>
   )
 }

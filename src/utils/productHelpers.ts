@@ -5,7 +5,8 @@ export function filterAndSortProducts(
   search: string,
   minPrice: number,
   maxPrice: number,
-  sort: string
+  sort: string,
+  selectedBrands: string[]
 ): Product[] {
   let result = [...products]
   if (search.trim()) {
@@ -16,15 +17,15 @@ export function filterAndSortProducts(
         p.content.toLowerCase().includes(lower)
     )
   }
-
+  if (selectedBrands.length > 0) {
+    result = result.filter((p) => selectedBrands.includes(p.brand))
+  }
   result = result.filter((p) => p.price >= minPrice && p.price <= maxPrice)
 
   if (sort === 'price-asc') {
     result.sort((a, b) => a.price - b.price)
   } else if (sort === 'price-desc') {
     result.sort((a, b) => b.price - a.price)
-  } else if (sort === 'relevance') {
-    result.sort((a, b) => b.relevance - a.relevance)
   }
 
   return result
@@ -33,4 +34,8 @@ export function filterAndSortProducts(
 export function paginate<T>(items: T[], page: number, perPage: number): T[] {
   const start = (page - 1) * perPage
   return items.slice(start, start + perPage)
+}
+
+export function toggleItem<T>(list: T[], item: T): T[] {
+  return list.includes(item) ? list.filter((i) => i !== item) : [...list, item]
 }
