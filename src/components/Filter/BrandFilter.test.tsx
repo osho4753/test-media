@@ -4,7 +4,7 @@ import { vi } from 'vitest'
 import BrandFilter from './BrandFilter'
 
 describe('BrandFilter', () => {
-  it('отображает чекбоксы и реагирует на выбор', async () => {
+  it('Define checkboxes and could choose some', async () => {
     const onChange = vi.fn()
     render(
       <BrandFilter

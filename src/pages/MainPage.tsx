@@ -1,15 +1,15 @@
 import { useEffect, useMemo, useState } from 'react'
-import { ProductCard } from '../components/ProductCard'
+import { ProductCard } from '../components/PageComponents/ProductCard'
 import { SearchBar } from '../components/SearchBar'
-import { SortSelect } from '../components/SortSelect'
-import { PriceFilter } from '../components/PriceFilter'
-import { Pagination } from '../components/Pagination'
+import { SortSelect } from '../components/Filter/SortSelect'
+import { PriceFilter } from '../components/Filter/PriceFilter'
+import { Pagination } from '../components/PageComponents/Pagination'
 import { useDebounce } from '../api/useDebounce'
 import { useProducts } from '../api/useProducts'
-import PerPageFilter from '../components/PerPageFilter'
+import PerPageFilter from '../components/Filter/PerPageFilter'
 import { filterAndSortProducts, paginate } from '../utils/productHelpers'
-import BrandFilter from '../components/BrandFilter'
-import CategoryFilter from '../components/CategoryFilter'
+import BrandFilter from '../components/Filter/BrandFilter'
+import CategoryFilter from '../components/Filter/CategoryFilter'
 
 function MainPage() {
   const { products, loading } = useProducts()

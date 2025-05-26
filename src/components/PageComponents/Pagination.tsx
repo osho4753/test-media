@@ -1,4 +1,4 @@
-import { generatePagination } from '../utils/paginationHelpers'
+import { generatePagination } from '../../utils/paginationHelpers'
 
 interface Props {
   currentPage: number

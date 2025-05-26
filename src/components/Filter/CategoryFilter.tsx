@@ -1,7 +1,7 @@
-import type { Product } from '../types/product'
-import { toggleItem } from '../utils/productHelpers'
+import type { Product } from '../../types/product'
+import { toggleItem } from '../../utils/productHelpers'
 import { useState } from 'react'
-import { useCategoryList } from '../api/useCategoryList'
+import { useCategoryList } from '../../api/useCategoryList'
 interface Props {
   value: Product[]
   selected: string[]

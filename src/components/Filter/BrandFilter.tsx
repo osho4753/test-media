@@ -1,5 +1,5 @@
-import { toggleItem } from '../utils/productHelpers'
-import { useBrandList } from '../api/useBrandList'
+import { toggleItem } from '../../utils/productHelpers'
+import { useBrandList } from '../../api/useBrandList'
 import { useState } from 'react'
 interface Props {
   value: string[]
