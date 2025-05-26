@@ -10,7 +10,7 @@ This is a React + TypeScript + Vite project that displays a list of products wit
 - Full-text search (with debounce)
 - Sorting by price (ascending / descending)
 - Filtering by:
-  - Brand (checkboxes)
+  - Brand 
   - Category
   - Price range (`Price from` / `Price to`)
 - Pagination
