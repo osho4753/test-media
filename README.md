@@ -1,54 +1,79 @@
-# React + TypeScript + Vite
+# Product Listing App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a React + TypeScript + Vite project that displays a list of products with full filtering, sorting, search, and pagination functionality. The app uses a simulated API and is styled with Tailwind CSS.
 
-Currently, two official plugins are available:
+🔗 **Live demo:** https://test-media-brown.vercel.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- Display products from a simulated API
+- Full-text search (with debounce)
+- Sorting by price (ascending / descending)
+- Filtering by:
+  - Brand (checkboxes)
+  - Category
+  - Price range (`Price from` / `Price to`)
+- Pagination
+- Responsive design
+- Unit tests for:
+  - Components
+  - Hooks
+  - Utility functions
+- Deployed on Vercel
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Technologies Used
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- **React** with **TypeScript**
+- **Vite** as build tool
+- **Tailwind CSS** for styling
+- **Jest + React Testing Library** for testing
+- **Vercel** for deployment
+
+---
+
+## 🛠️ Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Install dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
 ```
+ npm install
+```
+
+### 3. Start development server
+
+```
+ npm run dev
+
+```
+
+### 4. Run tests
+
+```
+npm run test
+
+```
+
+## Design Decisions
+
+-Component decomposition: Each filter (brand, category, price, search, sort) is separated into its own component for better reusability and testability.
+
+-State management: Used local state + custom hooks (useFilters, useDebounce) to manage filtering and performance.
+
+-Memoization: Used useMemo to optimize filtering logic and avoid unnecessary re-renders.
+
+-Debounced Search: Implemented a debounced full-text search to reduce filtering calls on every keystroke.
+
+-Pagination: Implemented simple client-side pagination with configurable number of items per page.
+
+-Testing: Covered core functionality with unit tests including components, hooks, and utilities.
+
+-Responsiveness: The UI adapts well to different screen sizes using Tailwind's responsive utilities.
+
+-Error handling: Added error and loading states to improve user experience.
