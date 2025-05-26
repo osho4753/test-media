@@ -1,9 +1,8 @@
-import type { Product } from '../types/product'
 import { toggleItem } from '../utils/productHelpers'
 import { useBrandList } from '../api/useBrandList'
 import { useState } from 'react'
 interface Props {
-  value: Product[]
+  value: string[]
   selected: string[]
   onChange: (brands: string[]) => void
 }

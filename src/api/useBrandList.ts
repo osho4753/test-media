@@ -1,8 +1,7 @@
 import { useMemo } from 'react'
 
-export function useBrandList(products: { brand: string }[]) {
+export function useBrandList(products: string[]) {
   return useMemo(() => {
-    const allBrands = products.map((p) => p.brand)
-    return Array.from(new Set(allBrands)).sort()
+    return Array.from(new Set(products)).sort()
   }, [products])
 }

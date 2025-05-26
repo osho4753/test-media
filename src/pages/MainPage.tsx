@@ -72,14 +72,13 @@ function MainPage() {
                 onMaxChange={(val) => setMaxPrice(val || Infinity)}
               />
             </div>
-
             <div>
               <h2 className="text-lg font-semibold mb-2">Sort</h2>
               <SortSelect value={sort} onChange={setSort} />
             </div>
             <div>
               <BrandFilter
-                value={products}
+                value={products.map((p) => p.brand)}
                 selected={selectedBrands}
                 onChange={setSelectedBrands}
               />{' '}
