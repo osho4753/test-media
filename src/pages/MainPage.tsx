@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { ProductCard } from '../components/PageComponents/ProductCard'
-import { SearchBar } from '../components/SearchBar'
+import { SearchBar } from '../components/PageComponents/SearchBar'
 import { SortSelect } from '../components/Filter/SortSelect'
 import { PriceFilter } from '../components/Filter/PriceFilter'
 import { Pagination } from '../components/PageComponents/Pagination'
